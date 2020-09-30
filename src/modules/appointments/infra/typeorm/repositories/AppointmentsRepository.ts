@@ -15,6 +15,22 @@ class AppointmentsRepository implements IAppointmentsRepository {
     this.ormRepository = getRepository(Appointment);
   }
 
+  public async create({
+    provider_id,
+    user_id,
+    date,
+  }: ICreateAppointmentDTO): Promise<Appointment> {
+    const appointment = this.ormRepository.create({
+      provider_id,
+      user_id,
+      date,
+    });
+
+    await this.ormRepository.save(appointment);
+
+    return appointment;
+  }
+
   public async findAllInDayFromProvider({
     provider_id,
     day,
@@ -63,17 +79,6 @@ class AppointmentsRepository implements IAppointmentsRepository {
     });
 
     return findAppointment;
-  }
-
-  public async create({
-    provider_id,
-    date,
-  }: ICreateAppointmentDTO): Promise<Appointment> {
-    const appointment = this.ormRepository.create({ provider_id, date });
-
-    await this.ormRepository.save(appointment);
-
-    return appointment;
   }
 }
 
