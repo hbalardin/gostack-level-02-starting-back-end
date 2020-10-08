@@ -4,7 +4,8 @@ import fs from 'fs';
 import IParseMailTemplateDTO from '../dtos/IParseMailTemplateDTO';
 import IMailTemplateProvider from '../models/IMailTemplateProvider';
 
-export default class HandlebarsMailProvider implements IMailTemplateProvider {
+export default class HandlebarsMailTemplateProvider
+  implements IMailTemplateProvider {
   public async parse({
     file,
     variables,
