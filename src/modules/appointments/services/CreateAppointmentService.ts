@@ -74,7 +74,7 @@ export default class CreateAppointmentService {
       `provider-appointments:${provider_id}:${format(
         appointmentDate,
         'yyyy-M-d',
-      )}}`,
+      )}`,
     );
 
     return appointment;
